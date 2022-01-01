@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, Touchable, TouchableOpacity, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TextInput, KeyboardAvoidingView, Touchable, TouchableOpacity, Keyboard } from 'react-native';
 import Task from './components/task';
 
 
@@ -51,7 +51,7 @@ export default function App() {
         behavior={Platform.OS === 'ios' ?"padding" : "height"}
         style={styles.writeTaskWrapper}>
 
-        <TextInput style={styles.input} placeholder={'New Task'} value={task} onChangeText={text => setTask(text)}/>
+        <TextInput style={styles.input} placeholder={'New Task'} placeholderTextColor={'white'} value={task} onChangeText={text => setTask(text)}/>
 
         <TouchableOpacity onPress={() => handleAddTask()}>
           <View style={styles.addWrapper}>
@@ -62,6 +62,10 @@ export default function App() {
 
       </KeyboardAvoidingView>
 
+      <Text style={styles.deleteMessage}>Press an item to delete it</Text>
+      
+      
+
 
     </View>
   );
@@ -70,7 +74,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'lightgray',
+    backgroundColor: 'black',
   },
   tasksWarapper: {
     paddingTop: 80,
@@ -80,9 +84,12 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 24, 
     fontWeight: 'bold',
+    color: 'white'
   },
   tasks: {
-    paddingTop: 30
+    paddingTop: 30,
+
+
 
   },
   writeTaskWrapper: {
@@ -96,23 +103,31 @@ const styles = StyleSheet.create({
   input: {
     paddingVertical: 15,
     paddingHorizontal: 15, 
-    backgroundColor: 'white',
-    borderColor: 'grey',
+    backgroundColor: '#404040',
+    borderColor: 'black',
     borderRadius: 60,
     borderWidth: 1,
     width: 250,
+    
   },
   addWrapper: {
     width: 60, 
     height: 60, 
-    backgroundColor: 'white',
+    backgroundColor: 'grey',
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: "center",
-    borderColor: 'grey',
+    borderColor: 'black',
     borderWidth: 1,
   },
   addText: {
+
+  },
+  deleteMessage: {
+    color: 'white',
+    position: 'absolute',
+    bottom: 35,
+    paddingHorizontal: 30
 
   }
 
